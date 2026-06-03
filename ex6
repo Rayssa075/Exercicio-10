@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+void strcpy(char *destino, char *origem) {
+    while (*origem != '\0') {
+        *destino = *origem;
+        destino++;
+        origem++;
+    }
+    *destino = '\0';
+}
+
+int main() {
+    char origem[] = "Marina";
+    char destino[20];
+    strcpy(destino, origem);
+    cout << destino << endl;
+    return 0;
+}
