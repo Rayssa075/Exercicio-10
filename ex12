@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+void imp_int(int *v, int tamanho) {
+    for (int *p = v; p < v + tamanho; p++)
+    {
+        cout << *p << " ";
+    }
+    cout << endl;
+}
+
+void imp_float(float *v, int tamanho) {
+    for (float *p = v; p < v + tamanho; p++)
+    {
+        cout << *p << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int vetorInt[5] = {10, 20, 30, 40, 50};
+    float vetorFloat[5] = {1.1, 2.2, 3.3, 4.4, 5.5};
+
+    cout << "vetor de inteiros: ";
+    imp_int(vetorInt, 5);
+
+    cout << "vetor de reais: ";
+    imp_float(vetorFloat, 5);
+
+    return 0;
+}
