@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int strcmp(char *str1, char *str2) {
+    while (*str1 && *str2 && (*str1==*str2)) {
+        str1++;
+        str2++;
+    }
+
+    return *str1-*str2;
+}
+
+int main() {
+    char s1[100], s2[100];
+
+    cout<<"Digite a primeira string: ";
+    cin.getline(s1, 100);
+
+    cout <<"Digite a segunda string: ";
+    cin.getline(s2, 100);
+
+    int resultado=strcmp(s1, s2);
+
+    if (resultado==0){
+        cout<<"As strings sao iguais."<<endl;
+    }else if(resultado < 0){
+        cout << "A primeira string e menor que a segunda." << endl;
+    }else{
+        cout << "A primeira string e maior que a segunda." << endl;
+    }
+    return 0;
+}
