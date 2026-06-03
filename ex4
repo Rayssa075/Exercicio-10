@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+// Função solicitada no exercício 4
+int somaDiagonalPrincipal(int** matriz, int N) {
+    int soma = 0;
+    
+    // Na diagonal principal, o índice da linha é igual ao da coluna (0,0), (1,1), (2,2)...
+    for (int i = 0; i < N; i++) {
+        soma += matriz[i][i]; 
+    }
+    
+    return soma;
+}
+
+int main() {
+    int N;
+
+    cout << "Digite o tamanho da matriz quadrada (N): ";
+    cin >> N;
+
+    // 1. Alocação dinâmica da matriz usando ponteiros
+    int** matriz = new int*[N]; // Cria um vetor de ponteiros para as linhas
+    for (int i = 0; i < N; i++) {
+        matriz[i] = new int[N]; // Aloca cada linha com N elementos inteiros
+    }
+
+    // 2. Leitura dos elementos da matriz
+    cout << "Digite os elementos da matriz:" << endl;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            cout << "Matriz[" << i << "][" << j << "]: ";
+            cin >> matriz[i][j];
+        }
+    }
+
+    // 3. Chamada da função para calcular a soma
+    int resultado = somaDiagonalPrincipal(matriz, N);
+
+    // 4. Exibição do resultado
+    cout << "\nA soma da diagonal principal eh: " << resultado << endl;
+
+    // 5. Liberação da memória alocada (essencial ao trabalhar com ponteiros!)
+    for (int i = 0; i < N; i++) {
+        delete[] matriz[i]; // Deleta cada linha
+    }
+    delete[] matriz; // Deleta o vetor de ponteiros principal
+
+    return 0;
+}
