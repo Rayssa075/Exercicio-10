@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int matriz[100][100];
+    int *p = &matriz[0][0];
+    
+    for (int i = 0; i < 100 * 100; i++) {
+        *(p + i) = 0;
+    }
+
+    for (int i = 0; i < 100 * 100; i++) {
+        *(p + i) = i + 1;
+    }
+
+    cout << matriz[0][0] << endl;    
+    cout << matriz[0][99] << endl;   
+    cout << matriz[99][99] << endl;  
+
+    return 0;
+}
