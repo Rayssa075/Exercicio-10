@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int **alocaMatriz(int m, int n)
+{
+    int **matriz;
+    int i;
+
+    matriz = (int **)malloc(m * sizeof(int *));
+    matriz[0] = (int *)malloc(m * n * sizeof(int));
+
+    for(i = 1; i < m; i++)
+    {
+        matriz[i] = matriz[0] + i * n;
+    }
+    return matriz;
+}
+
+void liberaMatriz(int **matriz)
+{
+    free(matriz[0]);
+    free(matriz);
+}
+
+int main()
+{
+    int m, n;
+    int **matriz;
+    int i, j;
+
+    printf("numero de linhas:");
+    scanf("%d", &m);
+
+    printf("numero de colunas:");
+    scanf("%d", &n);
+
+    matriz = alocaMatriz(m, n);
+
+    for(i = 0; i < m; i++)
+    {
+        for(j = 0; j < n; j++)
+        {
+            printf("Elemento [%d][%d]: ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    printf("matriz:");
+
+    for(i = 0; i < m; i++)
+    {
+        for(j = 0; j < n; j++)
+        {
+            printf("%4d ", matriz[i][j]);
+        }
+    }
+    liberaMatriz(matriz);
+    return 0;
+}
